@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script>
+		/* 这样一直在占用资源
+		 后端程序员特别喜欢的同步写法  极度不推荐*/
+
+		let response = $.ajax({
+			url : '.',
+			async : false
+		})
+
+		console.log(response);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
