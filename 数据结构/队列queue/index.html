@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./queue.js"></script>
+    <script>
+        //方块舞的舞伴分配问题
+        var manQueue = new Queue();
+        manQueue.enQueue('老张');
+        manQueue.enQueue('老王');
+        manQueue.enQueue('老李');
+
+        var womenQueue = new Queue();
+        womenQueue.enQueue('小红');
+        womenQueue.enQueue('小兰');
+        womenQueue.enQueue('小花');
+
+        function getDancer(){
+            return '男士'+manQueue.quQueue()+';女士'+womenQueue.quQueue();
+        }
+
+        console.log('第一队舞伴:'+getDancer());
+        console.log('第二队舞伴:'+getDancer());
+    </script>
+</body>
+</html>

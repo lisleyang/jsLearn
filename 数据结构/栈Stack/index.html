@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./stack.js"></script>
+    <script>
+    //应用：回文算法
+    //123454321  abcdedcba 这种叫做回文
+    function isPalindrome(word){
+        var s = new Stack();
+        for(var i=0;i<word.length;i++){
+            s.push(word[i]);
+        }
+
+        var str = "";
+        while(s.top>0){
+            str += s.pop();
+        }
+
+        if(str == word){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    </script>
+</body>
+</html>
