@@ -9,6 +9,8 @@
 
 但是如果问号紧跟在任何量词 *、 +、? 或 {} 的后面，将会使量词变为非贪婪的（匹配尽量少的字符）
 
+很多情况下，非贪婪匹配和只写最小值效果是一样的，如?和{1}，{2,5}?和{2}
+
 ```javascript
 let str = 'as357sda91';
 let str1 = str.replace(/\d+/g,function(){
@@ -22,6 +24,27 @@ let str2 = str.replace(/\d+?/g,function(){
 })
 console.log(str2);	//as哈哈哈sda哈哈
 ```
+```javascript
+var regExp = /\d{2,5}/g;
+var string = '123 1234 12345 123456';
+console.log(string.match(regExp))//[123,1234,12345,123456]
+
+var regExp = /\d{2,5}?/g;
+var string = '123 1234 12345 123456';
+console.log(string.match(regExp))//[12,12,34,12,34,12,34,56]
+
+
+```
+
+### 特殊字符
+
+匹配所有合法字符 : /[^\\:*<>|"?\r\n]/
+
+.英文句号 ： 表示[^\n\r\u2028\u2029] ，所有字符，除了 换行符，回车符，行分隔符和段分隔符
+
+
+
+
 
 ### 正则替换
 

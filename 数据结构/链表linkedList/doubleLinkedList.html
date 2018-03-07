@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向链表</title>
+</head>
+<body>
+	<script>
+		function Node(element){
+			this.element = element;
+			this.next = null;
+			this.previous = null;
+		}
+
+		function LList(){
+			this.head = new Node('head');
+			this.insert = insert;
+			this.find = find;
+			this.display = display;
+			this.remove = remove;
+			this.displayReverse = displayReverse;
+			this.findLast = findLast
+		}
+
+		function find(item){
+			var currNode = this.head;
+			while(currNode.element!=item){
+				currNode = currNode.next;
+			}
+			return currNode;
+		}
+		function insert(newElement,item){
+			var newNode = new Node(newElement);
+			var current = this.find(item);
+			//比单向链表要多一个previous属性
+			newNode.next = current.next;
+			newNode.previous = current;
+			current.next = newNode;
+			if(newNode.next){
+				newNode.next.prev = newNode;
+			}
+		}
+		function display(){
+			var currNode = this.head;
+			while(currNode.next){
+				console.log(currNode.next)	//除去头节点
+				currNode = currNode.next;
+			}
+		}
+		function displayReverse(){
+			var currNode = this.findLast();
+			while(currNode.previous){
+				console.log(currNode)	//除去头节点
+				currNode = currNode.previous;
+			}
+		}
+
+		function findLast(){
+			var currNode = this.head;
+			while(currNode.next){
+				currNode = currNode.next;
+			}
+			return currNode;
+		}
+
+		function remove(item){
+			var currNode = this.find(item);
+
+			if(currNode.next){	//判断currNode是不是尾节点
+				currNode.previous.next = currNode.next;
+				currNode.next.previous = currNode.previous;
+				currNode.previous = null;
+				currNode.next = null;
+			}else{
+				currnNode.previous.next = null;
+				currnNode.previous = null;
+			}
+		}
+
+		var cities = new LList()
+		cities.insert('first','head');
+		cities.insert('second','first');
+		cities.insert('third','second');
+		cities.display()
+		console.log("======")
+		cities.displayReverse()
+		console.log('======');
+		cities.remove('second');
+		cities.display()
+	</script>
+</body>
+</html>
