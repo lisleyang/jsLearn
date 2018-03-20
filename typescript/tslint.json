@@ -1,0 +1,9 @@
+{
+    "defaultSeverity": "warning", //lint时显示"error","warning"还是什么都不显示
+    "extends": [
+        "tslint:recommended"    //使用哪套规则
+    ],
+    "jsRules": {},
+    "rules": {},    //对每个规则进行制定
+    "rulesDirectory": []
+}

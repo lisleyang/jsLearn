@@ -22,31 +22,28 @@ var count;	/*无法推断，类型为any*/
 ##### Array类型的声明
 
 array类型的声明有两种写法。一是可以在数组元素的类型后面跟着[]来表示包含这种类型元素的数组
-```typescript
+```javascript
 var list:number[] = [1,2,3];
 ```
 第二种是使用范型数组类型Array
-```typescript
+```javascript
 var list:Array<number> = [1,2,3]
 ```
 
 如果数组里混合了各种类型
-```typescript
+```javascript
 var list:any[] = [1,'asd',true];
 list[1] = 100
-
-//也可以这么写（联合类型）
-var list:Array<number|string|boolean> = [1,'asd',true];
 ```
 
 ##### enum类型的声明
 enum类型是为了给一个数字集合更友好的命名。enum类型中的成员默认从0开始，但你也可以手动设置成员中的值来更改这种默认行为。
-```typescript
+```javascript
 enum Color {Red,Green,Blue}
 var c:Color =Color.Green
 ```
 会编译为如下代码
-```typescript
+```javascript
 var Color;
 (function (Color) {
     Color[Color["Red"] = 0] = "Red";
@@ -59,7 +56,7 @@ var c = Color.Green;
 ```
 
 ##### 从某种程度上，any的对立面就是void，即所有类型都不存在的时候。你会在一个函数没有返回值的时候看到它。
-```typescript
+```javascript
 function warnUser:void(){
 	alert('asd');
 }
@@ -67,7 +64,7 @@ function warnUser:void(){
 ### 联合类型 
 
 Typescript允许联合类型
-```typescript
+```javascript
 var path:string[]|string;
 path = '/temp'
 path = ['/temp','/temp1'];
@@ -76,28 +73,6 @@ path = 1 	/*错误*/
 
 ### 类型别名
 
-Typescript允许使用type关键字声明类型别名
-```typescript
-type PrimitiveArray = Array<string|number|boolean>;
-type myNumber = number;
-type CallBack = ()=>void;
-```
-
-### 环境声明
-
-环境声明允许在Typescript中创建一个**不会被编译到Javascript中的变量。**
-
-```typescript
-customerConsole.log('asd'); //报错 Can't find name customerConsole
-```
-```typescript
-interface ICustomerConsle{
-    log(arg:string):void
-}
-declare var customeConsole:ICustomerConsle;
-
-customeConsole.log('asd')
-```
 
 
 
