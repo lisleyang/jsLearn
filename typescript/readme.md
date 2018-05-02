@@ -99,6 +99,80 @@ declare var customeConsole:ICustomerConsle;
 customeConsole.log('asd')
 ```
 
+### Typescript中使用async/await
+
+##### 1. 将tsConfig.json中的compilerOptions.lib添加上es2015;
+##### 2. 写源代码
+
+```typescript
+class Test{
+    constructor(){
+        this.goTest()
+    }
+
+    async goTest(){
+        let aaa = await this.getData();
+        console.log(aaa);
+    }
+
+    getData(){
+        return new Promise((resolve,reject)=>{
+            setTimeout(() => {
+                resolve(222)
+            }, 3000);
+        })
+        
+    }
+}
+
+new Test()
+
+```
+##### 3. 编译
+##### 4. 添加promise-polyfill（Typescript会把async/await编译成Promise）
+
+## 函数
+
+### 函数的类型
+
+下面是声明函数的参数以及返回值的类型
+
+```typescript
+function getName(name:string):string{
+    return "Hi"+name;
+}
+```
+
+而函数本身的类型也是可以定义的。
+
+```typescript
+var getName :(name:string)=>string;
+getName = function(name:string):string{
+
+}
+```
+用interface修饰函数的类型
+```typescript
+interface SearchFunc{
+    (source:string,subString:string):boolean
+}
+
+var mySearch : SearchFunc = function(source:string,subString:string){
+    let result = source.search(subString);
+    if(result != -1){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+```
+
+但是函数的类型声名是可以从被赋值的函数中推断出来的，因此对函数本身使用类型声明不是一个好的实践。
+
+### 可选参数和默认参数
+
+可选参数必须放在必选参数列表的后面
 
 
 ## jQuery拓展插件声明文件

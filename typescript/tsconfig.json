@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES5",    //编译后js的版本
+        "sourceMap": true,
+        "noImplicitAny": true,  //没有隐式的any类型的字段
+        "removeComments": true, //是否移除备注
+        "module": "commonjs",   //模块化的标准
+        "typeRoots": [                  //如果指定了typeRoots，只有typeRoots下面的包才会被解析 
+            "node_modules/@types"
+        ],
+        "types": [          //如果指定了types，只有被列出来的声明文件才会被解析；设为[]禁止自动引用解析
+            "jquery"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "compileOnSave": false  //要想设置为true即IDE自动编译，需要下载插件比较麻烦。一般使用gulp/webpack进行替代
+}

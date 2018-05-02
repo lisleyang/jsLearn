@@ -1,9 +1,10 @@
+//说明文档 https://palantir.github.io/tslint/usage/configuration/
 {
     "defaultSeverity": "warning", //lint时显示"error","warning"还是什么都不显示
     "extends": [
         "tslint:recommended"    //使用哪套规则
     ],
     "jsRules": {},
-    "rules": {},    //对每个规则进行制定
+    "rules": {},    //对每个规则进行制定,详情见https://palantir.github.io/tslint/rules/
     "rulesDirectory": []
 }
