@@ -70,4 +70,52 @@ defer是在dom树构建完成后才回去执行代码，async则不保证，他�
 
 ## 懒加载
 
-* 图片进入可视区域后再去请求图片资源
+当我们的图片进入可视区域，去请求资源；
+
+需要去监听scroll事件，去判断我们懒加载的图片是否进入可视区域
+
+```html
+<img src="" lazyload="true" data-origin="./a.jpg">
+```
+```javascript
+var viewportHeight = document.documentElement.clientHeight; //可视区域高度
+function lazyLoad(){
+    var eles = document.querySelectorAll("img[lazyload=true][data-origin]");
+    Array.prototype.forEach.apply(eles,function(item,index){
+        var rect;
+        if(item.dataset.origin=='') return;
+        rect = item.getBoundingClientRect();
+
+        //rect.top < viewportHeight说明进入了可视区域
+        //rect.bottom>=0防止可视区域上方图片的加载
+        if(rect.bottom>=0 && rect.top < viewportHeight){
+            !function(){
+                var img = new Image();
+                img.src = item.dataset.url;
+                img.onload = function(){
+                    item.src = img.src;
+                }
+            }()
+        }
+    })
+}
+
+lazyLoad()
+document.addEventListener("scroll",lazyLoad);
+```
+
+## 预加载
+
+preload.js
+
+方法一:
+
+```javascript
+var oImg = new Image();
+oImg.src = "https://www.baidu.com/img/bd_logo1.png"
+```
+
+方法二: 使用XMLHttpRequest
+
+
+# 重绘与回流
