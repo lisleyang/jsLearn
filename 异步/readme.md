@@ -1,5 +1,7 @@
 //axios.get返回的是一个Promise
+
 //Promise对象有then方法
+
 //await后面可以接Promise对象	返回的是这个Promise resolve的参数
 
 Promise写法：
