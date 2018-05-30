@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/lisleyang/jsLearn#readme",
   "dependencies": {
-    "github-markdown-css": "^2.10.0"
+    "github-markdown-css": "^2.10.0",
+    "nodejs-websocket": "^1.7.1"
   }
 }
