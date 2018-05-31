@@ -144,4 +144,74 @@ str.match(reg)  //['goodbye']
 
 这说明，分支也是惰性结构，匹配到前面的，就不再去匹配后面的了。
 
+# 第二章. 位置匹配
 
+## 2.1 什么是位置
+
+位置（锚）是相邻字符之间的位置(不是字符本身)
+
+## 2.2 如何匹配位置呢？
+
+在ES5中，共有6个锚
+
+> ^, $, \b , \B , (?=p) , (?!p)
+
+### 2.2.1 ^ 和 $
+
+ <span style="color:yellow">^</span>  匹配开头，在多行匹配中匹配行开头
+
+ <span style="color:yellow">$</span> 匹配结尾，在多行匹配中匹配行结尾
+
+```javascript
+var result = 'hello';
+result.replace(/^|$/g,'#')   //'#hello#'
+```
+
+### 2.2.2 <span style="color:red"> \b 和 \B </span>
+
+\b是单词边界，就是 \w 和 \W 之间的位置，也包括 \w 与 ^ 之间的位置，和 \w 与 $ 之间的位置。
+
+```javascript
+var result = "[JS] Lesson_01.mp3".replace(/\b/g,'#')
+console.log(result);  //[#JS#] #Lesson_01#.#mp3#
+// \w => [0-9a-zA-Z_]
+```
+
+### 2.2.3 (?=p) 和 (?!p)
+
+`(?=p)`表示p前面的位置，或者说，该位置后面的字符要匹配p
+
+```javascript
+var result = 'hello'.replace(/(?=l)/g,'#')  
+console.log(result);  //he#l#lo
+```
+
+`(?!p)` 就是 `(?=p)` 的相反意思
+
+```javascript
+var result = 'hello'.replace(/(?=l)/g,'#')  
+console.log(result);  //#h#ell#o#
+```
+
+两者的全名叫做`positive lookahead(正向先行断言) `和 `negative lookahead(负向先行断言)`
+
+es5之后的版本，会支持`positive lookbehind` 和 `negative lookbehind` ， 具体是 `(?<=p)` 和 `(?<!p)`
+
+## 2.3 位置的特性
+
+对于位置的理解，我们可以理解成空字符串`""`
+
+比如"hello"字符串
+
+> hello = "" + "h" + "" +"e" + "" + "l" + "l" + "o"+"";
+
+也可以写成
+
+> hello = "" + "" + "hello";
+
+因此，以下是没有任何问题的
+
+```javascript
+var result = /^^hello$$$/.test('hello');
+console.log(result) //true
+```
