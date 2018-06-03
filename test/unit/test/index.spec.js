@@ -1,4 +1,4 @@
-var add = require('./index.js').add;
+var add = require('../src/index.js').add;
 var expect = require('chai').expect;
 
 var dummy = {
@@ -12,7 +12,7 @@ var dummy = {
 };
 describe('Checking that everything is hooked up nicely', function() {
     it('Simple function', function() {
-        expect(dummy.aboveFive(2)).toEqual(false);
+        expect(dummy.aboveFive(2)).to.equal(true);
     });
 
     it('involving the dom', function() {
@@ -20,6 +20,15 @@ describe('Checking that everything is hooked up nicely', function() {
 
         dummy.setClass(el, 'foo');
 
-        expect(el.className).toBe('foo');
+        expect(el.className).to.equal('foo');
     });
 });
+
+
+//var expect = require('chai').expect;
+
+/*import {expect} from 'chai'
+
+describe('Test', function() {
+    it('It should be false', function() { expect(false).to.equal(false); });
+});*/

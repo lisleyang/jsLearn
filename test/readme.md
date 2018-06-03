@@ -34,6 +34,7 @@ Mocha/Jasmine 是testFramework
 Mocha是一个单元测试框架。但这还不够，也不能每写完一次就运行一下单测代码，这也效率太低了，所以还需要一个框架（即 karma）来做这个事情。
 
 Image the following scenario:
+
 * Write your own test suites with Mocha
 * Use Karma to run programmatically your Mocha tests cross-browser and cross-devices
 * More, integrate Karma with your Jasmine existing environment

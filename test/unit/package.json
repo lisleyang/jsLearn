@@ -27,5 +27,8 @@
         "mocha": "^3.2.0",
         "mockjs": "^1.0.1-beta3",
         "phantomjs-prebuilt": "^2.1.14"
+    },
+    "dependencies": {
+        "webpack": "^4.10.2"
     }
 }
