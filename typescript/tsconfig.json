@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ES5",    //编译后js的版本
-        "sourceMap": true,
+        "sourceMap": true,  //配置sourcemap,但是必须同时配置webpack//https://webpack.js.org/guides/typescript/
         "noImplicitAny": true,  //没有隐式的any类型的字段
         "removeComments": true, //是否移除备注
         "module": "commonjs",   //模块化的标准

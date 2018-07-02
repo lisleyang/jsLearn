@@ -99,6 +99,36 @@ declare var customeConsole:ICustomerConsle;
 customeConsole.log('asd')
 ```
 
+###
+
+```js
+let returnObj : Object = {};
+
+searchArr.forEach(element=>{
+    let name = element.split('=')[0];
+    let value = element.split('=')[1];
+
+    **returnObj[name]** = value;        //会报错，因为作为key [ts] Element implicitly has an 'any' type because type 'Object' has no index signature.
+})
+```
+
+```js
+//方案一
+let returnObj : {
+    [key:string] : any
+} = {};
+
+//方案二
+let returnObj : any = {};ß
+
+searchArr.forEach(element=>{
+    let name = element.split('=')[0];
+    let value = element.split('=')[1];
+
+    returnObj[name] = value; 
+})
+```
+
 ### Typescript中使用async/await
 
 ##### 1. 将tsConfig.json中的compilerOptions.lib添加上es2015;

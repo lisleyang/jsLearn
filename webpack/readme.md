@@ -1,3 +1,16 @@
+## bundle与chunk的概念
+
+A bundle is some related code packaged into a single file.
+
+If you don't want all of your code be put into a single huge bundle you will split it into multiple bundles which are called chunks in webpack terminology. 
+
+## vendor的概念
+
+Vendor 指第三方的库或者公共的基础组件
+
+## Tree Shaking/scope-hoisting/code-spliting
+
+
 Tree Shaking:删除多余的代码 https://doc.webpack-china.org/guides/tree-shaking/
 scope-hoisting : 作用域提升，减少一部分代码 https://zhuanlan.zhihu.com/p/27980441
 code-spliting : 防止重复引用模块。动态引入模块。https://webpack.js.org/guides/code-splitting/
