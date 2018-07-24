@@ -1,12 +1,21 @@
+## style-loader负责把css独立出来，默认放到header里面
+
+
 ## bundle与chunk的概念
 
 A bundle is some related code packaged into a single file.
 
-If you don't want all of your code be put into a single huge bundle you will split it into multiple bundles which are called chunks in webpack terminology. 
+If you don't want all of your code be put into a single huge bundle you will split it into multiple bundles which are called chunks in webpack terminology. （CommonChunkPlugin）
 
 ## vendor的概念
 
 Vendor 指第三方的库或者公共的基础组件
+
+## runtime/manifest概念
+
+在浏览器端，用以连接所有打包完以后的模块。
+
+runtime是程序，manifest是数据
 
 ## Tree Shaking/scope-hoisting/code-spliting
 
@@ -15,7 +24,34 @@ Tree Shaking:删除多余的代码 https://doc.webpack-china.org/guides/tree-sha
 scope-hoisting : 作用域提升，减少一部分代码 https://zhuanlan.zhihu.com/p/27980441
 code-spliting : 防止重复引用模块。动态引入模块。https://webpack.js.org/guides/code-splitting/
 
-### webpack-dev-server
+## code-spliting
+
+目的：
+
+1. 把代码打成不同的包，按需加载或者至少并行加载；提升加载速度；
+2. 为了不把一些公共代码打包到各个入口，减少体积
+
+三种方法实现code-splitting：
+
+1. 在entry手动分割入口
+2. 使用`SplitChunks`来去重和分割代码
+3. 动态导入：使用模块的内联函数
+
+
+#### entryPoints手动分割
+
+最简单，但有陷阱。
+
+webpack4之前通过CommonsChunkPlugin；
+
+废弃了 CommonsChunkPlugin，引入了 optimization.splitChunks 这个选项。optimization.splitChunks 默认是不用设置的。如果 mode 是 production，那 Webpack 4 就会开启 Code Splitting。默认 Webpack 4 只会对按需加载的代码做分割。如果我们需要配置初始加载的代码也加入到代码分割中，可以设置 splitChunks.chunks 为 'all'。
+
+
+### webpack-dev-server 与 webpack-dev-middleware区别
+
+都是会在源码变化后自动编译；
+
+webpack-dev-server会自动刷新页面；webpack-dev-middleware不会
 
 
 
