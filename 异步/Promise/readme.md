@@ -38,6 +38,26 @@ new Promise(
 
 ```
 
+Promise后面还可以跟多个then
+
+```javascript
+
+let promise = new Promise(
+  (resolve,reject)=>{
+    image.onload = function(){
+      resolve(img)
+    }
+  }
+)
+
+promise.then(img=>{
+  cosnole.log(img.width)
+})
+promise.then(img=>{
+  console.log(img.height)
+})
+```
+
 原来
 ```javascript
 fs.readFile(fileA, 'utf-8', function (err, data) {
@@ -83,7 +103,7 @@ new Promise((resolve, reject) => {
 
 ```
 
-但是直接return无法使用异步（因为是立刻return的）；如下为**错误代码**
+但是**直接return无法使用异步**（因为是立刻return的）；如下为**错误代码**
 
 ```javascript
 new Promise((resolve, reject) => {
