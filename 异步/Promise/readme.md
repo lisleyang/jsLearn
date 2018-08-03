@@ -185,6 +185,8 @@ pr1.then(
 
 ### 3. Promise链式调用
 
+then函数必须返回Promise的实例。
+
 首先，下面这段代码是可以执行的，因为**then方法默认返回一个Promise**,Promise就有then方法。想要传递参数需要return；
 
 ```javascript
