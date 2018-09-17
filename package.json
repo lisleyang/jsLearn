@@ -22,6 +22,9 @@
   "homepage": "https://github.com/lisleyang/jsLearn#readme",
   "dependencies": {
     "github-markdown-css": "^2.10.0",
+    "iconv-lite": "^0.4.24",
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
     "nodejs-websocket": "^1.7.1"
   }
 }

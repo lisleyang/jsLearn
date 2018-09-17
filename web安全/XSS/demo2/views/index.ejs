@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/encode.js"></script>
+    <script src="/javascripts/domParse.js"></script>
+    <script>
+    //慕课网老师是这么写的 先对html进行了转义（&nbsp;转化为空格之类的）,然后进行校正和过滤
+    var parse = function(str){
+      var result = '';
+      try{
+        //先解码
+        //再DomParse
+        console.log('-------')
+        console.log(he.unescape(str,{strict : true}))
+        console.log('-------')
+
+        // result = he.unescape(str,{strict : true});
+        // return result;
+        HTMLParse(he.unescape(str,{strict : true}),{
+            start:function(tag,attrs,unary){
+                //  过滤掉了标签属性
+                if(tag=='script'||tag=='style'||tag=='link'||tag=='iframe'||tag=='frame')return '';
+
+                results += '<'+tag;
+                for(var i=0,len=attrs.length;i<len;i++){
+                    results += " "+attrs[i].name+'="'+attrs[i].escaped+'"';
+                }
+                results += (unary?"/":"")+">";
+            },
+            end:function(tag){
+                results += "</"+tag+">";
+            },
+            chars:function(text){
+                results += text;
+            },
+            comment:function(text){
+                results +="<!--"+text+"-->";
+            }
+        })
+        return result
+      }catch(e){
+
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <textarea name="name" id="txt" cols="30" rows="10"></textarea>
+    <button id="btn"> 评论 </button>
+    <button id="get"> 获取评论 </button>
+    <script>
+    var btn = document.getElementById('btn')
+    var get = document.getElementById('get')
+    var txt = document.getElementById('txt')
+
+    btn.addEventListener('click',function(){
+      var xhr = new XMLHttpRequest()
+      var url = '/comment?comment=' + txt.value;
+      xhr.open('get',url,true);
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+          if(xhr.status == 200){
+          }else{
+            console.log('error')
+          }
+        }
+      }
+      xhr.send()
+    })
+
+    get.addEventListener('click',function(){
+      var xhr = new XMLHttpRequest()
+      var url = '/getComment';
+      xhr.open('get',url,true);
+      xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+          if(xhr.status == 200){
+            console.log(111)
+            //慕课老师进行了转义，然后DOMParse过滤一些dom节点
+            //var com = parse(JSON.parse(xhr.response).comment);
+            var com = JSON.parse(xhr.response).comment;
+            var txt = document.createElement('span');
+            txt.innerHTML = com;
+            document.body.appendChild(txt);
+          }else{
+            console.log('error')
+          }
+        }
+      }
+      xhr.send()
+    })
+    </script>
+  </body>
+</html>
