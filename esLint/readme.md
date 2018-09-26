@@ -1,3 +1,22 @@
+### 使用
+1. 需要在本地或者全局安装eslint
+
+```bash
+$ npm install eslint --save-dev
+```
+
+2. 然后初始化配置文件
+
+```bash
+$ ./node_modules/.bin/eslint --init
+```
+
+3. 此时vscode的eslint插件会生效。会在你的代码上标红提示错误。
+
+当然也可以运行`eslint ./src`来跑
+
+
+
 ```javascript
 module.exports = {
     "root": true, //为了不让eslint继续去父级目录下寻找.eslintrc，因为它默认会去父级目录下找并且与当前文件merge
@@ -45,3 +64,21 @@ eslint ./src --ext .js,.vue --quiet --fix
 --quiet 只在error的时候进行报告
 --fix 自动修复
 ```
+
+### 关于vscode的eslint插件
+
+需要在本地或者全局安装eslint
+
+```bash
+$ npm install eslint --save-dev
+```
+
+然后初始化配置文件
+
+```bash
+$ ./node_modules/.bin/eslint --init
+```
+
+eslint插件才会生效。会在你的代码上标红提示错误。
+
+当然也可以运行`eslint ./src`来跑
