@@ -25,6 +25,7 @@
     "iconv-lite": "^0.4.24",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
-    "nodejs-websocket": "^1.7.1"
+    "nodejs-websocket": "^1.7.1",
+    "oppressor": "^0.0.1"
   }
 }

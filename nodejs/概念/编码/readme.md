@@ -28,7 +28,7 @@ UTF-8 最大的一个特点，就是它是一种变长的编码方式。它可�
 
 ## escape,encodeURI与encodeURIComponent
 
-encodeURI和encodeURIComponent都是返回字符的utf-8形式，并且在每个字节面前加上`%`;
+encodeURI和encodeURIComponent都是返回字符的utf-8形式(`不是编码，编码是变成字符的二进制形式`)，并且在每个字节面前加上`%`;
 
 他俩的区别在于范围不同，encodeURI不会对一些特殊符号进行编码
 
